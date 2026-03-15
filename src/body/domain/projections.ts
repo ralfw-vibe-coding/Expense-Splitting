@@ -1,5 +1,5 @@
 import moment from "https://deno.land/x/momentjs@2.29.1-deno/mod.ts";
-import type { EventRecord } from "https://raw.githubusercontent.com/ralfw/ccceventstores/main/src/mod.ts";
+import type { EventRecord } from "jsr:@ricofritzsche/eventstore";
 import { EventTypes } from "./event_types.ts";
 import type {
   EventDetails,

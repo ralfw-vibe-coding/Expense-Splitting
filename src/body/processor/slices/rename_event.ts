@@ -1,25 +1,22 @@
 import {
   createFilter,
-  createQuery,
   type Event,
-  type MemoryEventStore,
-} from "https://raw.githubusercontent.com/ralfw/ccceventstores/main/src/mod.ts";
+  type EventStore,
+} from "jsr:@ricofritzsche/eventstore";
 import { EventTypes } from "../../domain/event_types.ts";
 import type { EventId } from "../../domain/contracts.ts";
 import { projectEvents } from "../../domain/projections.ts";
 import { normalizeTitle } from "../../providers/name_normalizer.ts";
 
 export async function renameEvent(
-  es: MemoryEventStore,
+  es: EventStore,
   eventId: EventId,
   newTitle: string,
 ): Promise<{ ok: boolean; message: string }> {
   const { display, norm } = normalizeTitle(newTitle);
   if (!display) return { ok: false, message: "Name fehlt." };
 
-  const q = createQuery(
-    createFilter([EventTypes.eventCreated, EventTypes.eventRenamed, EventTypes.eventDeleted]),
-  );
+  const q = createFilter([EventTypes.eventCreated, EventTypes.eventRenamed, EventTypes.eventDeleted]);
   const ctx = await es.query(q);
   const eventsById = projectEvents(ctx.events);
   const existing = eventsById.get(eventId);

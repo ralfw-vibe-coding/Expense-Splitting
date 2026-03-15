@@ -1,18 +1,24 @@
-# Multi-Project Repo
+# FairTeilen
 
-In diesem Repo fasse ich mehrere Projekte zusammen.
+Diese Anwendung läuft jetzt als Web-App mit `Deno.serve(...)` statt als lokales Desktop-Fenster.
 
-Jedes beginnt in der Root.
+## Lokal starten
 
-Jedes bekommt einen eigenen main-Branch, z.B. `projectA - main`, `projectB - main` usw.
+Voraussetzung ist eine gesetzte `DATABASE_URL`, die auf den Postgres Event Store zeigt.
 
-Wenn Projekte weitere Branches brauchen, können sie so anlegen: `<project name> - <branch name>`
+```bash
+export DATABASE_URL="postgres://user:password@host:5432/database"
+deno task dev
+```
 
-Verschiedene Projekte könnten auch in Unterverzeichnissen liegen. Aber das unterstützen
-Deployment-Services wie Netlify nicht. Bei ihnen kann man ein Repo anbinden und einen Branch
-wählen - doch dann wird erwartet, das alles von der Root ausgeht.
+Danach ist die App unter dem von Deno ausgegebenen lokalen Port erreichbar.
 
-Mit mehreren Branches gleich vom Start weg, kann das Problem gelöst werden.
+## Deno Deploy
 
-Wenn sich ein Projekt größer entwickelt, kann ich es später immer noch in ein eigenes Repo
-auslagern.
+Für Deno Deploy braucht es im Wesentlichen nur:
+
+1. Dieses Repo als Deno-Projekt deployen.
+2. `DATABASE_URL` als Environment Variable setzen.
+3. `main.ts` als Entry Point verwenden.
+
+Beim Start initialisiert der verwendete `PostgresEventStore` die benötigte Datenbankstruktur selbst.

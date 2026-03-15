@@ -1,21 +1,21 @@
 import {
   createFilter,
-  createQuery,
   type Event,
-  type MemoryEventStore,
-} from "https://raw.githubusercontent.com/ralfw/ccceventstores/main/src/mod.ts";
+  type EventStore,
+} from "jsr:@ricofritzsche/eventstore";
 import { EventTypes } from "../../domain/event_types.ts";
 import type { EventId } from "../../domain/contracts.ts";
 import { projectEvents } from "../../domain/projections.ts";
 
 export async function deleteEvent(
-  es: MemoryEventStore,
+  es: EventStore,
   eventId: EventId,
 ): Promise<{ ok: boolean; message: string }> {
-  const q = createQuery(
-    createFilter([EventTypes.eventCreated], [{ eventCreatedID: eventId }]),
-    createFilter([EventTypes.eventRenamed, EventTypes.eventDeleted], [{ eventId }]),
-  );
+  const q = createFilter([
+    EventTypes.eventCreated,
+    EventTypes.eventRenamed,
+    EventTypes.eventDeleted,
+  ]);
   const ctx = await es.query(q);
   const event = projectEvents(ctx.events).get(eventId);
   if (!event || event.deleted) return { ok: false, message: "Veranstaltung nicht gefunden." };

@@ -1,5 +1,10 @@
-import { MemoryEventStore } from "https://raw.githubusercontent.com/ralfw/ccceventstores/main/src/mod.ts";
+import { PostgresEventStore } from "jsr:@ricofritzsche/eventstore";
+import type { EventStore } from "jsr:@ricofritzsche/eventstore";
 
-export async function createWriteThruEventStore(filename: string): Promise<MemoryEventStore> {
-  return await MemoryEventStore.createFromFile(filename, true, true);
+export async function createEventStore(): Promise<EventStore> {
+  const eventStore = new PostgresEventStore({
+    connectionString: Deno.env.get("DATABASE_URL"),
+  });
+  await eventStore.initializeDatabase();
+  return eventStore;
 }

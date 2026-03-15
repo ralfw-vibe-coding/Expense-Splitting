@@ -425,6 +425,8 @@ async function init() {
 
   wireActions();
   try {
+    const { theme } = await backend.getTheme();
+    applyTheme(theme);
     toast("Verbinde …");
     await backend.waitReady({ timeoutMs: 15000 });
   } catch (err) {

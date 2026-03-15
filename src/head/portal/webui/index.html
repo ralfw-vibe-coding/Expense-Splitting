@@ -4,6 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>FairTeilen</title>
+    <script>
+      const theme = localStorage.getItem("fairteilen-theme");
+      if (theme === "light" || theme === "dark") {
+        document.documentElement.dataset.theme = theme;
+      }
+    </script>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -20,7 +26,7 @@
         </div>
         <div class="topbar__actions">
           <div class="topbar__hint">
-            Daten werden lokal in <code>events.json</code> gespeichert.
+            Events werden im Postgres Event Store gespeichert.
           </div>
           <button id="btnToggleTheme" class="iconbtn themebtn" title="Modus wechseln" type="button">
             <svg
@@ -228,7 +234,6 @@
       <div id="toast" class="toast" aria-live="polite"></div>
     </div>
 
-    <script src="webui.js"></script>
     <script src="./backendproxy.js"></script>
     <script src="./app.js"></script>
   </body>

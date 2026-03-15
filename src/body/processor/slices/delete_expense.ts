@@ -1,14 +1,14 @@
 import {
   createFilter,
   type Event,
-  type MemoryEventStore,
-} from "https://raw.githubusercontent.com/ralfw/ccceventstores/main/src/mod.ts";
+  type EventStore,
+} from "jsr:@ricofritzsche/eventstore";
 import { EventTypes } from "../../domain/event_types.ts";
 import type { EventId, ExpenseId } from "../../domain/contracts.ts";
 import { projectExpenses } from "../../domain/projections.ts";
 
 export async function deleteExpense(
-  es: MemoryEventStore,
+  es: EventStore,
   eventId: EventId,
   expenseId: ExpenseId,
 ): Promise<{ ok: boolean; message: string }> {

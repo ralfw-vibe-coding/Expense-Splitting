@@ -1,14 +1,14 @@
 import {
   createFilter,
   type Event,
-  type MemoryEventStore,
-} from "https://raw.githubusercontent.com/ralfw/ccceventstores/main/src/mod.ts";
+  type EventStore,
+} from "jsr:@ricofritzsche/eventstore";
 import { EventTypes } from "../../domain/event_types.ts";
 import type { CreateEventResult } from "../../domain/contracts.ts";
 import { projectEvents } from "../../domain/projections.ts";
 import { normalizeTitle } from "../../providers/name_normalizer.ts";
 
-export async function createEvent(es: MemoryEventStore, title: string): Promise<CreateEventResult> {
+export async function createEvent(es: EventStore, title: string): Promise<CreateEventResult> {
   const { display, norm } = normalizeTitle(title);
   if (!display) return { ok: false, message: "Name fehlt." };
 
