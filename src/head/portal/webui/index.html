@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FairTeilen</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand__dot"></div>
+          <div class="brand__text">
+            <div class="brand__title">FairTeilen</div>
+            <div class="brand__subtitle">
+              Gerechtes Verteilen von Ausgaben in einer Gruppe leicht gemacht
+            </div>
+          </div>
+        </div>
+        <div class="topbar__actions">
+          <div class="topbar__hint">
+            Daten werden lokal in <code>events.json</code> gespeichert.
+          </div>
+          <button id="btnToggleTheme" class="iconbtn themebtn" title="Modus wechseln" type="button">
+            <svg
+              class="icon--moon"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M21 13.1A7.6 7.6 0 0 1 10.9 3a7.4 7.4 0 1 0 10.1 10.1z"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <svg
+              class="icon--sun"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.4 1.4M17.6 17.6 19 19M19 5l-1.4 1.4M6.4 17.6 5 19"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="panel">
+          <div class="panel__header">
+            <div>
+              <div class="panel__title">Veranstaltungen</div>
+              <div class="panel__subtitle">Klicke eine Veranstaltung, um sie zu öffnen.</div>
+            </div>
+          </div>
+
+          <div class="stack">
+            <div class="row">
+              <input id="newEventTitle" class="input" placeholder="Neue Veranstaltung" />
+              <button id="btnCreateEvent" class="btn btn--primary" title="Anlegen">+</button>
+            </div>
+            <div id="eventsList" class="list"></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel__header">
+            <div>
+              <div class="panel__title">Ausgaben</div>
+              <div id="eventMeta" class="panel__subtitle">Keine Veranstaltung ausgewählt.</div>
+            </div>
+          </div>
+
+          <div class="stack">
+            <div class="card">
+              <div class="card__title">Veranstaltung</div>
+              <div class="row row--title">
+                <div class="titleedit">
+                  <div id="eventTitleDisplay" class="titleedit__display">—</div>
+                  <input id="eventTitleInput" class="input titleedit__input" placeholder="Titel" />
+                </div>
+                <button id="btnEventTitleAction" class="iconbtn" title="Umbenennen" disabled>
+                  <svg
+                    class="icon--edit"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M4 20h4l10.5-10.5a2 2 0 0 0 0-2.8l-1.2-1.2a2 2 0 0 0-2.8 0L4 16v4z"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M13.5 6.5l4 4"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <svg
+                    class="icon--save"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M6 20h12a2 2 0 0 0 2-2V8.5L16.5 5H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2z"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M8 20v-7h8v7"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M8 5v5h7"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card__title">Neue Ausgabe</div>
+              <div class="grid4">
+                <div class="field">
+                  <label class="label" for="expenseDate">Datum</label>
+                  <input id="expenseDate" class="input" type="date" disabled />
+                </div>
+                <div class="field">
+                  <label class="label" for="expensePurpose">Zweck</label>
+                  <input id="expensePurpose" class="input" placeholder="z.B. Getränke" disabled />
+                </div>
+                <div class="field">
+                  <label class="label" for="expenseAmount">Betrag</label>
+                  <input
+                    id="expenseAmount"
+                    class="input"
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    placeholder="0,00"
+                    disabled
+                  />
+                </div>
+                <div class="field">
+                  <label class="label" for="expenseName">Name</label>
+                  <input id="expenseName" class="input" placeholder="z.B. Peter" disabled />
+                </div>
+              </div>
+              <div class="row row--right">
+                <button id="btnAddExpense" class="btn btn--primary" disabled>+</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card__title">Liste</div>
+              <div id="expensesList" class="list list--tall empty">Keine Ausgaben.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel__header">
+            <div>
+              <div class="panel__title">Übersicht</div>
+              <div class="panel__subtitle">Immer aktuell zur ausgewählten Veranstaltung.</div>
+            </div>
+          </div>
+
+          <div class="stack">
+            <div class="card">
+              <div class="card__title">Summen</div>
+              <div class="kpis">
+                <div class="kpi">
+                  <div class="kpi__label">Gesamt</div>
+                  <div id="kpiTotal" class="kpi__value">—</div>
+                </div>
+                <div class="kpi">
+                  <div class="kpi__label">Durchschnitt</div>
+                  <div id="kpiAverage" class="kpi__value">—</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card__title">Pro Person</div>
+              <div id="overviewList" class="list list--tall empty">Keine Daten.</div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <div id="toast" class="toast" aria-live="polite"></div>
+    </div>
+
+    <script src="webui.js"></script>
+    <script src="./backendproxy.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+dist/
+node_modules/
+.env
+.vite
+.env
+events.json
+events*.json
+settings.json
+.DS_Store

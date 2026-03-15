@@ -1,0 +1,67 @@
+{
+  "version": "5",
+  "specifiers": {
+    "jsr:@std/fs@^1.0.19": "1.0.22",
+    "jsr:@std/internal@^1.0.12": "1.0.12",
+    "jsr:@std/path@^1.1.2": "1.1.4",
+    "jsr:@std/path@^1.1.4": "1.1.4",
+    "jsr:@webui/deno-webui@*": "2.5.13",
+    "jsr:@zip-js/zip-js@^2.8.7": "2.8.17"
+  },
+  "jsr": {
+    "@std/fs@1.0.22": {
+      "integrity": "de0f277a58a867147a8a01bc1b181d0dfa80bfddba8c9cf2bacd6747bcec9308",
+      "dependencies": [
+        "jsr:@std/internal",
+        "jsr:@std/path@^1.1.4"
+      ]
+    },
+    "@std/internal@1.0.12": {
+      "integrity": "972a634fd5bc34b242024402972cd5143eac68d8dffaca5eaa4dba30ce17b027"
+    },
+    "@std/path@1.1.4": {
+      "integrity": "1d2d43f39efb1b42f0b1882a25486647cb851481862dc7313390b2bb044314b5",
+      "dependencies": [
+        "jsr:@std/internal"
+      ]
+    },
+    "@webui/deno-webui@2.5.13": {
+      "integrity": "6f03345e19b943177766a30ed728a0e16c228757b5469bceee6092a7e18a25f9",
+      "dependencies": [
+        "jsr:@std/fs",
+        "jsr:@std/path@^1.1.2",
+        "jsr:@zip-js/zip-js"
+      ]
+    },
+    "@zip-js/zip-js@2.8.17": {
+      "integrity": "ed05ac9c883df88f00e679fe4f819fe53675a5409e38c9b78cd037e490edade4"
+    }
+  },
+  "remote": {
+    "https://deno.land/std@0.97.0/_util/assert.ts": "2f868145a042a11d5ad0a3c748dcf580add8a0dbc0e876eaa0026303a5488f58",
+    "https://deno.land/std@0.97.0/_util/os.ts": "e282950a0eaa96760c0cf11e7463e66babd15ec9157d4c9ed49cc0925686f6a7",
+    "https://deno.land/std@0.97.0/fmt/colors.ts": "db22b314a2ae9430ae7460ce005e0a7130e23ae1c999157e3bb77cf55800f7e4",
+    "https://deno.land/std@0.97.0/path/_constants.ts": "1247fee4a79b70c89f23499691ef169b41b6ccf01887a0abd131009c5581b853",
+    "https://deno.land/std@0.97.0/path/_interface.ts": "1fa73b02aaa24867e481a48492b44f2598cd9dfa513c7b34001437007d3642e4",
+    "https://deno.land/std@0.97.0/path/_util.ts": "2e06a3b9e79beaf62687196bd4b60a4c391d862cfa007a20fc3a39f778ba073b",
+    "https://deno.land/std@0.97.0/path/common.ts": "eaf03d08b569e8a87e674e4e265e099f237472b6fd135b3cbeae5827035ea14a",
+    "https://deno.land/std@0.97.0/path/glob.ts": "314ad9ff263b895795208cdd4d5e35a44618ca3c6dd155e226fb15d065008652",
+    "https://deno.land/std@0.97.0/path/mod.ts": "4465dc494f271b02569edbb4a18d727063b5dbd6ed84283ff906260970a15d12",
+    "https://deno.land/std@0.97.0/path/posix.ts": "f56c3c99feb47f30a40ce9d252ef6f00296fa7c0fcb6dd81211bdb3b8b99ca3b",
+    "https://deno.land/std@0.97.0/path/separator.ts": "8fdcf289b1b76fd726a508f57d3370ca029ae6976fcde5044007f062e643ff1c",
+    "https://deno.land/std@0.97.0/path/win32.ts": "77f7b3604e0de40f3a7c698e8a79e7f601dc187035a1c21cb1e596666ce112f8",
+    "https://deno.land/std@0.97.0/testing/_diff.ts": "961eaf6d9f5b0a8556c9d835bbc6fa74f5addd7d3b02728ba7936ff93364f7a3",
+    "https://deno.land/std@0.97.0/testing/asserts.ts": "341292d12eebc44be4c3c2ca101ba8b6b5859cef2fa69d50c217f9d0bfbcfd1f",
+    "https://deno.land/x/momentjs@2.29.1-deno/mod.ts": "f0c8542988b812d2aeaabe4fe3d86e7638ba6dd469ac9dd252eb2d9a765b8b49",
+    "https://deno.land/x/momentjs@2.29.1-deno/node_modules/moment/moment.js": "7ba0da6b25146fe95a948b47ec8a7707b4bcf6a87390d4b655a0663e107f7845",
+    "https://raw.githubusercontent.com/ralfw/ccceventstores/main/src/filter/index.ts": "4c8085b4393f104adbda2db979bdd0c8ebe3dfc83b6f612b522ab2cbcf17f032",
+    "https://raw.githubusercontent.com/ralfw/ccceventstores/main/src/mod.ts": "bfc8fc1ea1a99d667458456ead17bcead1572267a82673d485147b6ab9a146d3",
+    "https://raw.githubusercontent.com/ralfw/ccceventstores/main/src/notifiers/index.ts": "a74441d1327f7f863dc0ea2e34e27c5681922139cb4de63e1074ddd5d74cc1bf",
+    "https://raw.githubusercontent.com/ralfw/ccceventstores/main/src/notifiers/memory/index.ts": "3995a1eb6dbd19eb303ccfe406db4ef79cc60840775fdd4bfbd14f857e27baed",
+    "https://raw.githubusercontent.com/ralfw/ccceventstores/main/src/stores/memory/eventstream.ts": "1472dd46e7a9789da67c3de98adbedd3c45c3c6198072e30bf52bf8405ebc446",
+    "https://raw.githubusercontent.com/ralfw/ccceventstores/main/src/stores/memory/index.ts": "24c4961098dd1bdacfbb2ef24b4b318fef6a68bb3372d017f78fbea21c35a020",
+    "https://raw.githubusercontent.com/ralfw/ccceventstores/main/src/stores/memory/queryprocessor.ts": "2844acc3bf7f55551c8f8f6b87198353d1f0e424d64ba538635651d2dde5795c",
+    "https://raw.githubusercontent.com/ralfw/ccceventstores/main/src/stores/memory/readwritelock.ts": "7e9ca7726a668791c0879a36808bdc6b5da633a6c381423ad926a27254db07b3",
+    "https://raw.githubusercontent.com/ralfw/ccceventstores/main/src/types.ts": "fd2ddaf323faea778cafb66cc2c2dbac40f78009506d484d94142878c4be6e90"
+  }
+}
